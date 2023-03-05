@@ -45,8 +45,6 @@ btnStart.addEventListener('click', () => {
     btnStart.disabled = true;
 
     if (countdown >= 0) {
-      let timeObject = convertMs(countdown);
-    } else {
       Notiflix.Notify.success('Countdown finished');
       clearInterval(timer);
     }
