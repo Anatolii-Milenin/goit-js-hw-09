@@ -42,7 +42,7 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function addLeadingZero(value) {
+function addZero(value) {
   return value.toString().padStart(2, '0');
 }
 
@@ -55,10 +55,10 @@ btnStart.addEventListener('click', () => {
     if (countdown >= 0) {
       let timeObject = convertMs(countdown);
 
-      days.textContent = addLeadingZero(timeObject.days);
-      hours.textContent = addLeadingZero(timeObject.hours);
-      minutes.textContent = addLeadingZero(timeObject.minutes);
-      seconds.textContent = addLeadingZero(timeObject.seconds);
+      days.textContent = addZero(timeObject.days);
+      hours.textContent = addZero(timeObject.hours);
+      minutes.textContent = addZero(timeObject.minutes);
+      seconds.textContent = addZero(timeObject.seconds);
     } else {
       Notiflix.Notify.success('Countdown finished');
       clearInterval(timer);
