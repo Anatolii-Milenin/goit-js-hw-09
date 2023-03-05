@@ -3,7 +3,6 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 const text = document.querySelector('#datetime-picker');
-const timerHtml = document.querySelector('.timer');
 const btnStart = document.querySelector('button[data-start]');
 const seconds = document.querySelector('span[data-seconds]');
 const minutes = document.querySelector('span[data-minutes]');
@@ -43,10 +42,6 @@ function convertMs(ms) {
   return { days, hours, minutes, seconds };
 }
 
-function addLeadingZero(value) {
-  return value.toString().padStart(2, '0');
-}
-
 btnStart.addEventListener('click', () => {
   let timer = setInterval(() => {
     let countdown = new Date(text.value) - new Date();
@@ -55,11 +50,6 @@ btnStart.addEventListener('click', () => {
 
     if (countdown >= 0) {
       let timeObject = convertMs(countdown);
-
-      days.textContent = addLeadingZero(timeObject.days);
-      hours.textContent = addLeadingZero(timeObject.hours);
-      minutes.textContent = addLeadingZero(timeObject.minutes);
-      seconds.textContent = addLeadingZero(timeObject.seconds);
     } else {
       Notiflix.Notify.success('Countdown finished');
       clearInterval(timer);
